@@ -1,0 +1,30 @@
+version: "3"
+services:
+
+  trade-db:       
+    container_name: trade-db
+    image: bitnami/mariadb:latest
+    volumes:      
+      - ./trade-db/custom.conf:/opt/bitnami/mariadb/conf/my_custom.cnf:ro
+    environment:         
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_DATABASE=trade
+      - MARIADB_EXTRA_FLAGS=--transaction-isolation=READ-COMMITTED --binlog-format=ROW --sql-mode=NO_ENGINE_SUBSTITUTION
+    ports:
+      - 3306:3306
+    restart: always
+  
+  trade-streamer:
+    container_name: trade-streamer
+    build: .
+    links:    
+      - trade-db          
+    environment:          
+      - MYSQL_HOST=trade-db
+      - MYSQL_DB=trade
+      - PORT=19000
+      - DUMP_RECORDS=100
+      #- MYSQL_PW=
+    ports:
+      - 19000:19000
+    restart: always
