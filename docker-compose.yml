@@ -22,9 +22,6 @@ services:
     environment:          
       - MYSQL_HOST=trade-db
       - MYSQL_DB=trade
-      - PORT=19000
-      - DUMP_RECORDS=100
+      - DUMP_RECORDS=1000
       #- MYSQL_PW=
-    ports:
-      - 19000:19000
     restart: always
