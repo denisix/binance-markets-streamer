@@ -1,14 +1,24 @@
 {
   "name": "binance-markets-streamer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Binance markets real-time trades data streamer to database (for later strategy backtesting)",
+  
   "main": "index.js",
   "scripts": {
 		"start": "node index.js",
     "docker": "docker compose up -d",
     "logs": "docker compose logs -f trade-streamer"
   },
-  "keywords": [],
+  "keywords": [
+    "binance database",
+    "binance datastream",
+    "binance dump",
+    "binance markets",
+    "binance realtime", 
+    "binance streams",
+    "binance trades",
+    "binance websocket"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
