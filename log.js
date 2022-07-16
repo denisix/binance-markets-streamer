@@ -1,1 +1,1 @@
-module.exports = (...args) => console.log.apply(new Date().toLocaleString('lt'), args)
+module.exports = (...args) => console.log.apply(null, [new Date().toLocaleString('lt'), ...args])
